@@ -16,7 +16,10 @@ int Treno::getViaggiatori_Vagone(){
     peturn maxPersone;
 }
 void Treno::sali(){
-    
+    count+=n;
+}
+void Treno::scendi(){
+    count-=n;
 }
 void Treno::scendi();
 int Treno::Viaggiatori_Attuali();
