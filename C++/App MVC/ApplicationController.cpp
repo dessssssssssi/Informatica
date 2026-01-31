@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#include <windows.h>
 
 ApplicationController::ApplicationController(ApplicationView *v):
 	Controller(v)
@@ -10,67 +11,52 @@ ApplicationController::ApplicationController(ApplicationView *v):
 	//myModel=(ApplicationModel*)model; // per non dover fare ogni volta il cast per usare il model
 }
 			void ApplicationController::logic(){
-
-            int scelta=3;
-
-            std::cin >> scelta;//acquisisce l'input da tastiera (in futuro potrebbe farlo l'handleEvent)
-
+            int scelta,rimuovi;
+            std::cin >> scelta;
             switch(scelta)
     		{
-        case 0: //semplicemente esegue l'istr. successiva nel main (si
-        //dovrebbero invocare i distruttori degli oggetti non più utili)
-        exit(0);
-        break;
-
-        //model->loadValue(model->getValue()+1);//incrementa
-
-        case 1:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+25);//incrementa
+            case 0: 
+            exit(0);
             break;
 
-        case 2:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+8);//decrementa
-            break;
+         
 
-        case 3:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+5);
-            break;
-
-        case 4:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+7);
-            break;
-
-        case 5:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+12);
-            break;
-
-        case 6:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+15);
-            break;
-
-        case 7:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+18);
-            break;
-
-        case 8:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+45);
-            break;
-
-        case 9:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+9);
-            break;
-
-        case 10:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue()+6);
-            break;
-
-        default:
-            ((ApplicationModel*)model)->loadValue(((ApplicationModel*)model)->getValue());//non
-            //cambia nulla! Si potrebbe segnale un errore dal view
-            break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                 ((ApplicationModel*)model)->Aggiungi(scelta-1);
+                break;
+            case 11:
+                std::cout<<"Inserisci il numero dell'articolo da rimuovere: ";
+                do{ 
+                    scelta=0;
+                    std::cin >> scelta;
+                    
+                }
+                while (scelta < 1 || scelta > 10);
+                    ((ApplicationModel*)model)->Rimuovi(scelta-1);
+                
+                break;
+            case 12:
+                ((ApplicationModel*)model)->Svuota();
+                break;
+            case 13:
+                std::cout<<"Grazie per l'acquisto di: "<<((ApplicationModel*)model)->getValore()<<"$";   
+                Sleep(1500); 
+                ((ApplicationModel*)model)->Svuota();
+                
+                break;
+            default:
+                std::cout<<"Scelta non disponibile riprova: ";
+                break;
     }
-
-
 
     }
 	//una sorta di LOOP:loadValue() di model-> notify()->update() di view

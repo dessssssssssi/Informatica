@@ -1,20 +1,21 @@
 //#include "StdAfx.h"
 #include "ApplicationModel.h"
 
-	ApplicationModel::ApplicationModel():
-	mValue(0),Model()
-	{}
 
-	//quando cambia lo stato dell'applicazione, il View va aggiornato
-	void ApplicationModel::loadValue(int value)
-	{
-		mValue=value;
-		notify();//""quando cambia lo stato dell'applicazione"", il View e il Controller vanno aggiornati!!!
-				 //per invocare update() del View e e del Controller
+	void ApplicationModel::Rimuovi(int i){
+		valore -= prodotti[i];
+		notify();
 	}
+	void ApplicationModel::Aggiungi(int i ){
+		valore += prodotti[i];
+		notify();
+	}
+	void ApplicationModel::Svuota(){
 
-	//semplice funzione che restituisce il valore
-	int ApplicationModel::getValue()
-	{
-		return mValue;
+		valore =0;
+		notify();
+	}
+	int ApplicationModel::getValore(){
+		return valore;
+		notify();
 	}

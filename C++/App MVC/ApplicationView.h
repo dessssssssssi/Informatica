@@ -1,5 +1,4 @@
 
-
 #ifndef APPLICATIONVIEW_H_
 #define APPLICATIONVIEW_H_
 

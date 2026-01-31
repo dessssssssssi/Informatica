@@ -31,7 +31,7 @@ void ApplicationView::draw()
     std::cout << "| 9. Ciotola Doppia - $9 (40 pz)              |" << std::endl;
     std::cout << "| 10. Snack Dentali - $6 (80 pz)              |" << std::endl;
     std::cout << "----------------------------------------------------" << std::endl;
-    std::cout << "| VALORE CARRELLO: $" << ((ApplicationModel*)model)->getValue() <<" |" << std::endl;
+    std::cout << "| VALORE CARRELLO: $" << ((ApplicationModel*)model)->getValore() <<" |" << std::endl;
     std::cout << "----------------------------------------------------" << std::endl;
     std::cout << "| COMANDI:                                        |" << std::endl;
     std::cout << "| [0] Esci - [1-10] Aggiungi al carrello         |" << std::endl;
@@ -44,6 +44,3 @@ void ApplicationView::draw()
 
 //void ApplicationView::initialize(){ controller = makeController();}
 //MVC::Controller* MVC::View::makeController() { return new MVC::Controller(this); }
-
-
-
